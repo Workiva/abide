@@ -1,0 +1,21 @@
+name: 'mock_name'
+version: 1.1.0
+description: mock description
+author: Mock Author <mock.author@workiva.com>
+homepage: https://github.com/Workiva/mock_name
+publish_to: https://pub.workiva.org
+
+environment:
+  sdk: '>=1.23.0 <2.0.0'
+
+executables:
+  abide:
+
+dev_dependencies:
+  abide:
+    hosted:
+      name: abide
+      url: https://pub.workiva.org
+    version: ^1.4.1
+  dependency_validator: ^1.1.0
+  mockito: ^0.11.0

@@ -1,0 +1,9 @@
+name: 'dart2_project'
+version: 1.1.0
+description: mock description
+author: Mock Author <mock.author@workiva.com>
+homepage: https://github.com/Workiva/mock_name
+publish_to: https://pub.workiva.org
+
+environment:
+  sdk: '>=1.23.0 <3.0.0'

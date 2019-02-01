@@ -1,0 +1,23 @@
+name: 'abide'
+version: 1.6.3
+description: A command line tool to manage analysis_options.yaml and check if it abides by requirements.
+author: Rob Becker <rob.becker@workiva.com>
+homepage: https://github.com/Workiva/abide
+
+environment:
+  sdk: '>=1.23.0 <3.0.0'
+
+executables:
+  abide:
+
+dependencies:
+  args:  ^1.4.4
+  dart2_constant: ^1.0.0
+  meta: ^1.1.6
+  resource: ^2.0.0
+  yaml: ^2.1.12
+
+dev_dependencies:
+  dart_dev: ^2.0.0
+  dependency_validator: ^1.1.2
+  test: '>=0.12.34 <2.0.0'
