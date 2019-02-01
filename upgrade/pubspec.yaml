@@ -1,0 +1,15 @@
+name: 'abide_upgrade'
+version: 1.0.0
+description: A command line tool to update abide.yaml
+author: Rob Becker <rob.becker@workiva.com>
+homepage: https://github.com/Workiva/abide
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+executables:
+  abide_upgrade: upgrade
+
+dependencies:
+  yaml: ^2.1.12
+  linter: ">=0.1.51" # Use the latest published linter

@@ -1,0 +1,10 @@
+.PHONY: smithy-script
+smithy-script:
+	$(MAKE) consumer-update
+	$(MAKE) install
+	$(MAKE) dart_check
+
+.PHONY: dart_check
+dart_check: ## runs commands
+##	pub run abide
+##	pub run dependency_validator
