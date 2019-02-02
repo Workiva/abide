@@ -111,7 +111,7 @@ avoid_double_and_int_checks:
   group: style
   docs: http://dart-lang.github.io/linter/lints/avoid_double_and_int_checks.html
   recommendation: required
-  reason:
+  reason: 
 
 avoid_empty_else:
   description: Avoid empty else statements.
@@ -136,6 +136,14 @@ avoid_function_literals_in_foreach_calls:
   docs: http://dart-lang.github.io/linter/lints/avoid_function_literals_in_foreach_calls.html
   recommendation: recommended
   reason: Use for (x in y) or forEach(someFunc) instead
+
+avoid_implementing_value_types:
+  description: Don't implement classes that override `==`.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/avoid_implementing_value_types.html
+  recommendation: optional
+  reason: 
 
 avoid_init_to_null:
   description: Don't explicitly initialize variables to null.
@@ -209,6 +217,22 @@ avoid_returning_null:
   recommendation: recommended
   reason: 
 
+avoid_returning_null_for_future:
+  description: Avoid returning null for Future.
+  maturity: stable
+  group: errors
+  docs: http://dart-lang.github.io/linter/lints/avoid_returning_null_for_future.html
+  recommendation: optional
+  reason: 
+
+avoid_returning_null_for_void:
+  description: Avoid returning null for void.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/avoid_returning_null_for_void.html
+  recommendation: optional
+  reason: 
+
 avoid_returning_this:
   description: Avoid returning this from methods just to enable a fluent interface.
   maturity: stable
@@ -223,6 +247,14 @@ avoid_setters_without_getters:
   group: style
   docs: http://dart-lang.github.io/linter/lints/avoid_setters_without_getters.html
   recommendation: recommended
+  reason: 
+
+avoid_shadowing_type_parameters:
+  description: Avoid shadowing type parameters.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/avoid_shadowing_type_parameters.html
+  recommendation: optional
   reason: 
 
 avoid_single_cascade_in_expression_statements:
@@ -258,11 +290,19 @@ avoid_types_on_closure_parameters:
   reason: 
 
 avoid_unused_constructor_parameters:
-  description: Avoid defining unused paramters in constructors.
+  description: Avoid defining unused parameters in constructors.
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/avoid_unused_constructor_parameters.html
   recommendation: recommended
+  reason: 
+
+avoid_void_async:
+  description: Avoid async functions that return void.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/avoid_void_async.html
+  recommendation: optional
   reason: 
 
 await_only_futures:
@@ -329,6 +369,14 @@ control_flow_in_finally:
   recommendation: required
   reason: 
 
+curly_braces_in_flow_control_structures:
+  description: DO use curly braces for all flow control structures.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/curly_braces_in_flow_control_structures.html
+  recommendation: optional
+  reason: 
+
 directives_ordering:
   description: Adhere to Effective Dart Guide directives sorting conventions.
   maturity: stable
@@ -361,6 +409,22 @@ empty_statements:
   recommendation: required
   reason: 
 
+file_names:
+  description: Name source files using `lowercase_with_underscores`.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/file_names.html
+  recommendation: optional
+  reason: 
+
+flutter_style_todos:
+  description: Use Flutter TODO format: // TODO(username): message, https://URL-to-issue.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/flutter_style_todos.html
+  recommendation: optional
+  reason: 
+
 hash_and_equals:
   description: Always override `hashCode` if overriding `==`.
   maturity: stable
@@ -379,7 +443,7 @@ implementation_imports:
 
 invariant_booleans:
   description: Conditions should not unconditionally evaluate to `true` or to `false`.
-  maturity: stable
+  maturity: experimental
   group: errors
   docs: http://dart-lang.github.io/linter/lints/invariant_booleans.html
   recommendation: optional
@@ -402,7 +466,7 @@ join_return_with_assignment:
   reason: 
 
 library_names:
-  description: Name libraries and source files using `lowercase_with_underscores`.
+  description: Name libraries using `lowercase_with_underscores`.
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/library_names.html
@@ -415,6 +479,14 @@ library_prefixes:
   group: style
   docs: http://dart-lang.github.io/linter/lints/library_prefixes.html
   recommendation: recommended
+  reason: 
+
+lines_longer_than_80_chars:
+  description: AVOID lines longer than 80 characters.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/lines_longer_than_80_chars.html
+  recommendation: optional
   reason: 
 
 list_remove_unrelated_type:
@@ -455,6 +527,14 @@ non_constant_identifier_names:
   group: style
   docs: http://dart-lang.github.io/linter/lints/non_constant_identifier_names.html
   recommendation: recommended
+  reason: 
+
+null_closures:
+  description: Do not pass `null` as an argument where a closure is expected.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/null_closures.html
+  recommendation: optional
   reason: 
 
 omit_local_variable_types:
@@ -539,7 +619,7 @@ prefer_asserts_in_initializer_lists:
 
 prefer_bool_in_asserts:
   description: Prefer using a boolean as the assert condition.
-  maturity: stable
+  maturity: deprecated
   group: style
   docs: http://dart-lang.github.io/linter/lints/prefer_bool_in_asserts.html
   recommendation: optional
@@ -610,7 +690,7 @@ prefer_contains:
   reason: 
 
 prefer_equal_for_default_values:
-  description: Prefer equal for default values.
+  description: Use `=` to separate a named parameter from its default value.
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/prefer_equal_for_default_values.html
@@ -630,6 +710,14 @@ prefer_final_fields:
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/prefer_final_fields.html
+  recommendation: optional
+  reason: 
+
+prefer_final_in_for_each:
+  description: Prefer final in for-each loop variable if reference is not reassigned.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/prefer_final_in_for_each.html
   recommendation: optional
   reason: 
 
@@ -673,6 +761,14 @@ prefer_initializing_formals:
   recommendation: recommended
   reason: 
 
+prefer_int_literals:
+  description: Prefer int literals over double literals.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/prefer_int_literals.html
+  recommendation: optional
+  reason: 
+
 prefer_interpolation_to_compose_strings:
   description: Use interpolation to compose strings and values.
   maturity: stable
@@ -705,6 +801,22 @@ prefer_iterable_whereType:
   recommendation: optional
   reason: Optional for now since it is only available in Dart 2
 
+prefer_mixin:
+  description: Prefer using mixins.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/prefer_mixin.html
+  recommendation: optional
+  reason: 
+
+prefer_null_aware_operators:
+  description: Prefer using null aware operators.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/prefer_null_aware_operators.html
+  recommendation: optional
+  reason: 
+
 prefer_single_quotes:
   description: Prefer single quotes where they won't require escape sequences.
   maturity: stable
@@ -719,6 +831,14 @@ prefer_typing_uninitialized_variables:
   group: style
   docs: http://dart-lang.github.io/linter/lints/prefer_typing_uninitialized_variables.html
   recommendation: required
+  reason: 
+
+prefer_void_to_null:
+  description: Don't use the Null type, unless you are positive that you don't want void.
+  maturity: stable
+  group: errors
+  docs: http://dart-lang.github.io/linter/lints/prefer_void_to_null.html
+  recommendation: optional
   reason: 
 
 public_member_api_docs:
@@ -746,10 +866,18 @@ slash_for_doc_comments:
   reason: 
 
 sort_constructors_first:
-  description: Sort constructor declarations before method declarations.
+  description: Sort constructor declarations before other members.
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/sort_constructors_first.html
+  recommendation: optional
+  reason: 
+
+sort_pub_dependencies:
+  description: Sort pub dependencies.
+  maturity: stable
+  group: pub
+  docs: http://dart-lang.github.io/linter/lints/sort_pub_dependencies.html
   recommendation: optional
   reason: 
 
@@ -802,11 +930,19 @@ type_init_formals:
   reason: 
 
 unawaited_futures:
-  description: Await future-returning functions inside async function bodies.
+  description: `Future` results in `async` function bodies must be `await`ed or marked `unawaited` using `package:pedantic`.
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/unawaited_futures.html
   recommendation: recommended
+  reason: 
+
+unnecessary_await_in_return:
+  description: Unnecessary await keyword in return.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/unnecessary_await_in_return.html
+  recommendation: optional
   reason: 
 
 unnecessary_brace_in_string_interps:
@@ -814,6 +950,14 @@ unnecessary_brace_in_string_interps:
   maturity: stable
   group: style
   docs: http://dart-lang.github.io/linter/lints/unnecessary_brace_in_string_interps.html
+  recommendation: optional
+  reason: 
+
+unnecessary_const:
+  description: Avoid const keyword.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/unnecessary_const.html
   recommendation: optional
   reason: 
 
@@ -831,6 +975,14 @@ unnecessary_lambdas:
   group: style
   docs: http://dart-lang.github.io/linter/lints/unnecessary_lambdas.html
   recommendation: recommended
+  reason: 
+
+unnecessary_new:
+  description: Unnecessary new keyword.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/unnecessary_new.html
+  recommendation: optional
   reason: 
 
 unnecessary_null_aware_assignments:
@@ -888,6 +1040,22 @@ unrelated_type_equality_checks:
   docs: http://dart-lang.github.io/linter/lints/unrelated_type_equality_checks.html
   recommendation: required
   reason: Comparing references of a type where neither is a subtype of the other most likely will return false and might not reflect programmer's intent.
+
+use_full_hex_values_for_flutter_colors:
+  description: Prefer an 8-digit hexadecimal integer(0xFFFFFFFF) to instantiate Color.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/use_full_hex_values_for_flutter_colors.html
+  recommendation: optional
+  reason: 
+
+use_function_type_syntax_for_parameters:
+  description: Use generic function type syntax for parameters.
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/use_function_type_syntax_for_parameters.html
+  recommendation: optional
+  reason: 
 
 use_rethrow_when_possible:
   description: Use rethrow to rethrow a caught exception.
