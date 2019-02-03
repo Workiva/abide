@@ -23,13 +23,9 @@ import 'package:resource/resource.dart';
 import 'package:yaml/yaml.dart';
 
 Future<YamlMap> loadAbideYaml() async {
-  try {
-    const Resource resource = const Resource('package:abide/abide.yaml');
-    final String string = await resource.readAsString();
-    return loadYaml(string);
-  } on Exception catch (_) {
-    return null;
-  }
+  const Resource resource = const Resource('package:abide/abide.yaml');
+  final String string = await resource.readAsString();
+  return loadYaml(string);
 }
 
 @visibleForTesting
