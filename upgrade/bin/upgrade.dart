@@ -44,7 +44,7 @@ void main() {
     }
 
     sb.write('''${rule.name}:
-  description: ${rule.description}
+  description: "${rule.description.replaceAll('"', r'\"')}"
   maturity: ${rule.maturity.name}
   group: ${rule.group.name}
   docs: http://dart-lang.github.io/linter/lints/${rule.name}.html
