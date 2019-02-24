@@ -13,6 +13,7 @@
 // limitations under the License.
 
 @TestOn('vm')
+import 'dart:async';
 import 'package:test/test.dart';
 import 'package:yaml/yaml.dart';
 

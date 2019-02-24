@@ -67,7 +67,7 @@ YamlMap loadAnalysisOptions(
   if (pathToAnalysisOptionsFile != null) {
     return loadYamlFile(pathToAnalysisOptionsFile);
   } else {
-    loadYamlFile(findAnalysisOptionsFile(
+    return loadYamlFile(findAnalysisOptionsFile(
         renameDeprecatedFilename: renameDeprecatedFilename));
   }
 }
