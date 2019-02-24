@@ -19,7 +19,7 @@ import 'package:yaml/yaml.dart';
 import 'package:abide/src/util.dart';
 import 'package:abide/src/update.dart';
 
-void main() async {
+Future<Null> main() async {
   YamlMap abideYaml = await loadAbideYaml();
 
   group('Update', () {
