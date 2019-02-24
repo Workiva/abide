@@ -43,7 +43,7 @@ Future<Null> main() async {
     }
   });
 
-  group('Verifiy pubspec check', () {
+  group('Verify pubspec check', () {
     final YamlMap pubspec = loadPubspec();
     final YamlMap pubspecWithMissingDeps =
         loadYamlFile('test/fixtures/pubspec_missing_deps.yaml');

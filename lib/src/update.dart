@@ -19,41 +19,53 @@ import 'package:yaml/yaml.dart';
 import 'package:abide/src/constants.dart';
 import 'package:abide/src/util.dart';
 
-Future<Null> updateAnalysisOption(YamlMap abideYaml,
-    {bool uncommentClean}) async {
-  final YamlMap currentAnalysisOptions =
-      loadAnalysisOptions(renameDeprecatedFilename: true);
-  final String currentAnalysisOptionsString = loadAnalysisOptionsAsString();
+Future<String> updateAnalysisOption(YamlMap abideYaml,
+    {String pathToAnalysisOptionsFile,
+    bool uncommentClean,
+    bool writeToFile = true}) async {
+  YamlMap currentAnalysisOptions = loadAnalysisOptions(
+      pathToAnalysisOptionsFile: pathToAnalysisOptionsFile,
+      renameDeprecatedFilename: true);
+
+  final String currentAnalysisOptionsString = loadAnalysisOptionsAsString(
+      pathToAnalysisOptionsFile: pathToAnalysisOptionsFile);
+
   Map<String, Map<String, int>> lintErrorCounts = <String, Map<String, int>>{};
   // Write a version with ALL lint rules enabled
   // and then run dart analyzer to get counts of lint per rule
   // those counts are passed into the 2nd write run to decide
   // whether or not to comment out a lint rule with a lot of
-  // new lint warnings
-  writeAnalyisOptionsFile(
-      all: true,
-      abideYaml: abideYaml,
-      currentAnalysisOptions: currentAnalysisOptions,
-      currentAnalysisOptionsString: currentAnalysisOptionsString);
-  lintErrorCounts = await getLintErrorCounts(abideYaml: abideYaml);
-  writeAnalyisOptionsFile(
+  // new lint warnings. If we're not writing to a file, then lint
+  // counts won't work, so skip that step.
+  if (writeToFile) {
+    writeAnalyisOptionsFile(
+        all: true,
+        abideYaml: abideYaml,
+        currentAnalysisOptions: currentAnalysisOptions,
+        currentAnalysisOptionsString: currentAnalysisOptionsString);
+    lintErrorCounts = await getLintErrorCounts(abideYaml: abideYaml);
+  }
+  return writeAnalyisOptionsFile(
       abideYaml: abideYaml,
       currentAnalysisOptions: currentAnalysisOptions,
       currentAnalysisOptionsString: currentAnalysisOptionsString,
       lintErrorCounts: lintErrorCounts,
-      uncommentClean: uncommentClean);
+      uncommentClean: uncommentClean,
+      writeToFile: writeToFile);
 }
 
-void writeAnalyisOptionsFile(
+String writeAnalyisOptionsFile(
     {YamlMap abideYaml,
     YamlMap currentAnalysisOptions,
     String currentAnalysisOptionsString,
     bool all = false,
     bool uncommentClean = false,
-    Map<String, Map<String, int>> lintErrorCounts:
+    bool writeToFile = true,
+    Map<String, Map<String, int>> lintErrorCounts =
         const <String, Map<String, int>>{}}) {
   currentAnalysisOptions ??= new YamlMap();
 
+  final String currentInclude = getYamlValue(currentAnalysisOptions, 'include');
   final bool currentImplicitCasts = getYamlValue(
       currentAnalysisOptions, 'analyzer:strong-mode:implicit-casts', true);
   final bool currentImplicitDynamic = getYamlValue(
@@ -61,6 +73,11 @@ void writeAnalyisOptionsFile(
 
   final StringBuffer sb = new StringBuffer('''
 # analysis_options.yaml docs: https://www.dartlang.org/guides/language/analysis-options 
+''');
+  if (currentInclude != null && currentInclude.isNotEmpty) {
+    sb.writeln('include: $currentInclude');
+  }
+  sb.write('''
 analyzer:
   # Strong mode is required. Applies to the current project.
   strong-mode:
@@ -198,8 +215,8 @@ linter:
 $output
 ''');
   }
-
-  new File(analysisOptionsFilename).writeAsStringSync(sb.toString());
+  String finalOutput = sb.toString();
+  new File(analysisOptionsFilename).writeAsStringSync(finalOutput);
   if (!all) {
     print('Wrote $analysisOptionsFilename');
   }
@@ -207,6 +224,7 @@ $output
     print(
         'There were missing recommendations. Please inform the maintainers of the abide tool to perform an abide upgrade.');
   }
+  return finalOutput;
 }
 
 String _lintResultFor(String lint, Map<String, Map<String, int>> lintErrors) {

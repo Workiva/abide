@@ -62,12 +62,19 @@ YamlMap loadPubspec() => loadYamlFile(pubspecFilename);
 YamlMap loadSmithy() =>
     loadYamlFile(smithyFilename) ?? loadYamlFile(smithyFilename2);
 
-YamlMap loadAnalysisOptions({bool renameDeprecatedFilename: false}) =>
+YamlMap loadAnalysisOptions(
+    {String pathToAnalysisOptionsFile, bool renameDeprecatedFilename: false}) {
+  if (pathToAnalysisOptionsFile != null) {
+    return loadYamlFile(pathToAnalysisOptionsFile);
+  } else {
     loadYamlFile(findAnalysisOptionsFile(
         renameDeprecatedFilename: renameDeprecatedFilename));
+  }
+}
 
-String loadAnalysisOptionsAsString() {
-  final String filename = findAnalysisOptionsFile();
+String loadAnalysisOptionsAsString({String pathToAnalysisOptionsFile}) {
+  final String filename =
+      pathToAnalysisOptionsFile ?? findAnalysisOptionsFile();
   if (filename == null) {
     return '';
   }
