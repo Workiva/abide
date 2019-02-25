@@ -1,3 +1,6 @@
+# Generated with ❤ by abide https://github.com/Workiva/abide
+# Lint rules are based on the linter package version 0.1.79
+#
 # analysis_options.yaml docs: https://www.dartlang.org/guides/language/analysis-options 
 analyzer:
   # Strong mode is required. Applies to the current project.
@@ -49,7 +52,7 @@ linter:
     # Specify type annotations.
     # http://dart-lang.github.io/linter/lints/always_specify_types.html
     # recommendation: optional
-    # FIXME: 15 lint(s)
+    # FIXME: 19 lint(s)
     # - always_specify_types
 
     # Annotate overridden members.
@@ -119,6 +122,12 @@ linter:
     # 0 issues
     - avoid_function_literals_in_foreach_calls
 
+    # Don't implement classes that override `==`.
+    # http://dart-lang.github.io/linter/lints/avoid_implementing_value_types.html
+    # recommendation: optional
+    # 0 issues
+    - avoid_implementing_value_types
+
     # Don't explicitly initialize variables to null.
     # http://dart-lang.github.io/linter/lints/avoid_init_to_null.html
     # recommendation: recommended
@@ -174,6 +183,18 @@ linter:
     # 0 issues
     - avoid_returning_null
 
+    # Avoid returning null for Future.
+    # http://dart-lang.github.io/linter/lints/avoid_returning_null_for_future.html
+    # recommendation: optional
+    # 0 issues
+    - avoid_returning_null_for_future
+
+    # Avoid returning null for void.
+    # http://dart-lang.github.io/linter/lints/avoid_returning_null_for_void.html
+    # recommendation: optional
+    # 0 issues
+    - avoid_returning_null_for_void
+
     # Avoid returning this from methods just to enable a fluent interface.
     # http://dart-lang.github.io/linter/lints/avoid_returning_this.html
     # recommendation: recommended
@@ -185,6 +206,12 @@ linter:
     # recommendation: recommended
     # 0 issues
     - avoid_setters_without_getters
+
+    # Avoid shadowing type parameters.
+    # http://dart-lang.github.io/linter/lints/avoid_shadowing_type_parameters.html
+    # recommendation: optional
+    # 0 issues
+    - avoid_shadowing_type_parameters
 
     # Avoid single cascade in expression statements.
     # http://dart-lang.github.io/linter/lints/avoid_single_cascade_in_expression_statements.html
@@ -207,14 +234,20 @@ linter:
     # Avoid annotating types for function expression parameters.
     # http://dart-lang.github.io/linter/lints/avoid_types_on_closure_parameters.html
     # recommendation: optional
-    # FIXME: 5 lint(s)
+    # FIXME: 7 lint(s)
     # - avoid_types_on_closure_parameters
 
-    # Avoid defining unused paramters in constructors.
+    # Avoid defining unused parameters in constructors.
     # http://dart-lang.github.io/linter/lints/avoid_unused_constructor_parameters.html
     # recommendation: recommended
     # 0 issues
     - avoid_unused_constructor_parameters
+
+    # Avoid async functions that return void.
+    # http://dart-lang.github.io/linter/lints/avoid_void_async.html
+    # recommendation: optional
+    # 0 issues
+    - avoid_void_async
 
     # Await only futures.
     # http://dart-lang.github.io/linter/lints/await_only_futures.html
@@ -238,7 +271,7 @@ linter:
     # http://dart-lang.github.io/linter/lints/cascade_invocations.html
     # recommendation: optional
     # 0 issues
-    - cascade_invocations
+    # - cascade_invocations
 
     # Close instances of `dart.core.Sink`.
     # http://dart-lang.github.io/linter/lints/close_sinks.html
@@ -264,6 +297,12 @@ linter:
     # 0 issues
     - control_flow_in_finally
 
+    # DO use curly braces for all flow control structures.
+    # http://dart-lang.github.io/linter/lints/curly_braces_in_flow_control_structures.html
+    # recommendation: optional
+    # 0 issues
+    - curly_braces_in_flow_control_structures
+
     # Adhere to Effective Dart Guide directives sorting conventions.
     # http://dart-lang.github.io/linter/lints/directives_ordering.html
     # recommendation: recommended
@@ -288,6 +327,18 @@ linter:
     # 0 issues
     - empty_statements
 
+    # Name source files using `lowercase_with_underscores`.
+    # http://dart-lang.github.io/linter/lints/file_names.html
+    # recommendation: optional
+    # 0 issues
+    - file_names
+
+    # Use Flutter TODO format: // TODO(username): message, https://URL-to-issue.
+    # http://dart-lang.github.io/linter/lints/flutter_style_todos.html
+    # recommendation: optional
+    # 0 issues
+    - flutter_style_todos
+
     # Always override `hashCode` if overriding `==`.
     # http://dart-lang.github.io/linter/lints/hash_and_equals.html
     # recommendation: required
@@ -302,7 +353,8 @@ linter:
 
     # Conditions should not unconditionally evaluate to `true` or to `false`.
     # http://dart-lang.github.io/linter/lints/invariant_booleans.html
-    # recommendation: required
+    # recommendation: optional
+    # reason: There are several outstanding bugs with this lint that cause a good deal of noise
     # 0 issues
     - invariant_booleans
 
@@ -318,7 +370,7 @@ linter:
     # 0 issues
     - join_return_with_assignment
 
-    # Name libraries and source files using `lowercase_with_underscores`.
+    # Name libraries using `lowercase_with_underscores`.
     # http://dart-lang.github.io/linter/lints/library_names.html
     # recommendation: recommended
     # 0 issues
@@ -329,6 +381,12 @@ linter:
     # recommendation: recommended
     # 0 issues
     - library_prefixes
+
+    # AVOID lines longer than 80 characters.
+    # http://dart-lang.github.io/linter/lints/lines_longer_than_80_chars.html
+    # recommendation: optional
+    # FIXME: 29 lint(s)
+    # - lines_longer_than_80_chars
 
     # Invocation of `remove` with references of unrelated types.
     # http://dart-lang.github.io/linter/lints/list_remove_unrelated_type.html
@@ -360,11 +418,17 @@ linter:
     # 0 issues
     - non_constant_identifier_names
 
+    # Do not pass `null` as an argument where a closure is expected.
+    # http://dart-lang.github.io/linter/lints/null_closures.html
+    # recommendation: optional
+    # 0 issues
+    - null_closures
+
     # Omit type annotations for local variables.
     # http://dart-lang.github.io/linter/lints/omit_local_variable_types.html
     # recommendation: optional
     # reason: Conflicts with always_specify_types. Recommend commenting this one out.
-    # FIXME: 71 lint(s)
+    # FIXME: 82 lint(s)
     # - omit_local_variable_types
 
     # Avoid defining a one-member abstract class when a simple function will do.
@@ -475,11 +539,11 @@ linter:
     # 0 issues
     - prefer_contains
 
-    # Prefer equal for default values.
+    # Use `=` to separate a named parameter from its default value.
     # http://dart-lang.github.io/linter/lints/prefer_equal_for_default_values.html
     # recommendation: optional
-    # 0 issues
-    - prefer_equal_for_default_values
+    # FIXME: 6 lint(s)
+    # - prefer_equal_for_default_values
 
     # Use => for short members whose body is a single return statement.
     # http://dart-lang.github.io/linter/lints/prefer_expression_function_bodies.html
@@ -493,11 +557,17 @@ linter:
     # 0 issues
     - prefer_final_fields
 
+    # Prefer final in for-each loop variable if reference is not reassigned.
+    # http://dart-lang.github.io/linter/lints/prefer_final_in_for_each.html
+    # recommendation: optional
+    # FIXME: 14 lint(s)
+    # - prefer_final_in_for_each
+
     # Prefer final for variable declaration if reference is not reassigned.
     # http://dart-lang.github.io/linter/lints/prefer_final_locals.html
     # recommendation: optional
     # reason: Generates a lot of lint since people use var a lot for local variables.
-    # 0 issues
+    # FIXME: 8 lint(s)
     # - prefer_final_locals
 
     # Use `forEach` to only apply a function to all the elements.
@@ -515,14 +585,20 @@ linter:
     # Prefer generic function type aliases.
     # http://dart-lang.github.io/linter/lints/prefer_generic_function_type_aliases.html
     # recommendation: optional
-    # 0 issues
-    - prefer_generic_function_type_aliases
+    # FIXME: 1 lint(s)
+    # - prefer_generic_function_type_aliases
 
     # Use initializing formals when possible.
     # http://dart-lang.github.io/linter/lints/prefer_initializing_formals.html
     # recommendation: recommended
     # 0 issues
     - prefer_initializing_formals
+
+    # Prefer int literals over double literals.
+    # http://dart-lang.github.io/linter/lints/prefer_int_literals.html
+    # recommendation: optional
+    # 0 issues
+    - prefer_int_literals
 
     # Use interpolation to compose strings and values.
     # http://dart-lang.github.io/linter/lints/prefer_interpolation_to_compose_strings.html
@@ -549,6 +625,18 @@ linter:
     # 0 issues
     - prefer_iterable_whereType
 
+    # Prefer using mixins.
+    # http://dart-lang.github.io/linter/lints/prefer_mixin.html
+    # recommendation: optional
+    # 0 issues
+    - prefer_mixin
+
+    # Prefer using null aware operators.
+    # http://dart-lang.github.io/linter/lints/prefer_null_aware_operators.html
+    # recommendation: optional
+    # 0 issues
+    - prefer_null_aware_operators
+
     # Prefer single quotes where they won't require escape sequences.
     # http://dart-lang.github.io/linter/lints/prefer_single_quotes.html
     # recommendation: recommended
@@ -560,6 +648,12 @@ linter:
     # recommendation: required
     # 0 issues
     - prefer_typing_uninitialized_variables
+
+    # Don't use the Null type, unless you are positive that you don't want void.
+    # http://dart-lang.github.io/linter/lints/prefer_void_to_null.html
+    # recommendation: optional
+    # FIXME: 4 lint(s)
+    # - prefer_void_to_null
 
     # Document all public members.
     # http://dart-lang.github.io/linter/lints/public_member_api_docs.html
@@ -580,11 +674,17 @@ linter:
     # 0 issues
     - slash_for_doc_comments
 
-    # Sort constructor declarations before method declarations.
+    # Sort constructor declarations before other members.
     # http://dart-lang.github.io/linter/lints/sort_constructors_first.html
     # recommendation: optional
+    # FIXME: 4 lint(s)
+    # - sort_constructors_first
+
+    # Sort pub dependencies.
+    # http://dart-lang.github.io/linter/lints/sort_pub_dependencies.html
+    # recommendation: optional
     # 0 issues
-    - sort_constructors_first
+    - sort_pub_dependencies
 
     # Sort unnamed constructor declarations first.
     # http://dart-lang.github.io/linter/lints/sort_unnamed_constructors_first.html
@@ -623,17 +723,29 @@ linter:
     # 0 issues
     - type_init_formals
 
-    # Await future-returning functions inside async function bodies.
+    # `Future` results in `async` function bodies must be `await`ed or marked `unawaited` using `package:pedantic`.
     # http://dart-lang.github.io/linter/lints/unawaited_futures.html
     # recommendation: recommended
     # 0 issues
     - unawaited_futures
+
+    # Unnecessary await keyword in return.
+    # http://dart-lang.github.io/linter/lints/unnecessary_await_in_return.html
+    # recommendation: optional
+    # 0 issues
+    - unnecessary_await_in_return
 
     # Avoid using braces in interpolation when not needed.
     # http://dart-lang.github.io/linter/lints/unnecessary_brace_in_string_interps.html
     # recommendation: optional
     # 0 issues
     - unnecessary_brace_in_string_interps
+
+    # Avoid const keyword.
+    # http://dart-lang.github.io/linter/lints/unnecessary_const.html
+    # recommendation: optional
+    # FIXME: 2 lint(s)
+    # - unnecessary_const
 
     # Avoid wrapping fields in getters and setters just to be "safe".
     # http://dart-lang.github.io/linter/lints/unnecessary_getters_setters.html
@@ -646,6 +758,12 @@ linter:
     # recommendation: recommended
     # 0 issues
     - unnecessary_lambdas
+
+    # Unnecessary new keyword.
+    # http://dart-lang.github.io/linter/lints/unnecessary_new.html
+    # recommendation: optional
+    # FIXME: 47 lint(s)
+    # - unnecessary_new
 
     # Avoid null in null-aware assignment.
     # http://dart-lang.github.io/linter/lints/unnecessary_null_aware_assignments.html
@@ -674,7 +792,7 @@ linter:
     # Avoid using unnecessary statements.
     # http://dart-lang.github.io/linter/lints/unnecessary_statements.html
     # recommendation: required
-    # 0 issues
+    # FIXME: 1 lint(s)
     - unnecessary_statements
 
     # Don't access members with `this` unless avoiding shadowing.
@@ -689,6 +807,18 @@ linter:
     # reason: Comparing references of a type where neither is a subtype of the other most likely will return false and might not reflect programmer's intent.
     # 0 issues
     - unrelated_type_equality_checks
+
+    # Prefer an 8-digit hexadecimal integer(0xFFFFFFFF) to instantiate Color.
+    # http://dart-lang.github.io/linter/lints/use_full_hex_values_for_flutter_colors.html
+    # recommendation: optional
+    # 0 issues
+    - use_full_hex_values_for_flutter_colors
+
+    # Use generic function type syntax for parameters.
+    # http://dart-lang.github.io/linter/lints/use_function_type_syntax_for_parameters.html
+    # recommendation: optional
+    # 0 issues
+    - use_function_type_syntax_for_parameters
 
     # Use rethrow to rethrow a caught exception.
     # http://dart-lang.github.io/linter/lints/use_rethrow_when_possible.html

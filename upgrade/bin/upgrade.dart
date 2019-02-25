@@ -12,9 +12,16 @@ void main() {
         'lib/abide.yaml not found. This is meant to be run in to root of the abide project.');
     return;
   }
-
+  final File lockFile = new File('upgrade/pubspec.lock');
+  if (!lockFile.existsSync()) {
+    print(
+        'upgrade/pubspec.lock is missing. Please run pub get in the upgrade directory.');
+    return;
+  }
   final List<LintRule> lintrules = getAllLintRules();
   final YamlMap abideYamlRules = loadYaml(f.readAsStringSync());
+  final YamlMap pubspecLock = loadYaml(lockFile.readAsStringSync());
+  final String linterVersion = pubspecLock['packages']['linter']['version'];
   final List<String> existingKeys = <String>[];
   if (abideYamlRules != null) {
     existingKeys.addAll(abideYamlRules.keys.map((k) => k.toString()));
@@ -31,6 +38,8 @@ void main() {
 #  recommended - optional but recommended. Add it as you have time.
 #  optional    - optional. Up to you and your team to decide.
 #  avoid       - should not be present in analysis_options. Its presence is an error.
+
+__linter_version: $linterVersion
 
 ''');
 

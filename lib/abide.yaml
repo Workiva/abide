@@ -9,6 +9,8 @@
 #  optional    - optional. Up to you and your team to decide.
 #  avoid       - should not be present in analysis_options. Its presence is an error.
 
+__linter_version: 0.1.79
+
 always_declare_return_types:
   description: "Declare method return types."
   maturity: stable

@@ -53,13 +53,16 @@ void writeAnalyisOptionsFile(
     Map<String, Map<String, int>> lintErrorCounts:
         const <String, Map<String, int>>{}}) {
   currentAnalysisOptions ??= new YamlMap();
-
+  String linterVersion = abideYaml['__linter_version'];
   final bool currentImplicitCasts = getYamlValue(
       currentAnalysisOptions, 'analyzer:strong-mode:implicit-casts', true);
   final bool currentImplicitDynamic = getYamlValue(
       currentAnalysisOptions, 'analyzer:strong-mode:implicit-dynamic', true);
 
   final StringBuffer sb = new StringBuffer('''
+# Generated with ❤ by abide https://github.com/Workiva/abide
+# Lint rules are based on the linter package version $linterVersion
+#
 # analysis_options.yaml docs: https://www.dartlang.org/guides/language/analysis-options 
 analyzer:
   # Strong mode is required. Applies to the current project.
@@ -98,8 +101,7 @@ analyzer:
   final StringBuffer output = new StringBuffer();
 
   int nMissingRecommendations = 0;
-  final List<String> lintKeys =
-      abideYaml.keys.map<String>((k) => k.toString()).toList()..sort();
+  final List<String> lintKeys = getTopLevelYamlKeys(abideYaml);
   for (String lint in lintKeys) {
     String recommendation = getYamlValue(abideYaml, '$lint:recommendation', '');
     final String reason = getYamlValue(abideYaml, '$lint:reason', '');

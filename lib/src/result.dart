@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:abide/src/constants.dart';
+import 'package:abide/src/util.dart';
 import 'package:yaml/yaml.dart';
 
 class AbideResult {
@@ -44,12 +45,7 @@ class AbideResult {
         ..description = 'analyzer strong mode is used'
         ..pass = isStrongModeSet,
     });
-    // shenanigans to make sure the dart 2 type system is happy
-    // this ensures that we actually have a list of strings and
-    // not a list of dynamic
-    final List<String> lintKeys =
-        abideYaml.keys.map<String>((k) => k.toString()).toList()..sort();
-
+    final List<String> lintKeys = getTopLevelYamlKeys(abideYaml);
     // each lint rule becomes a check
     for (String lintKey in lintKeys) {
       final String recommendation = abideYaml[lintKey]['recommendation'] ?? '';
