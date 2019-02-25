@@ -216,7 +216,9 @@ $output
 ''');
   }
   String finalOutput = sb.toString();
-  new File(analysisOptionsFilename).writeAsStringSync(finalOutput);
+  if (writeToFile) {
+    new File(analysisOptionsFilename).writeAsStringSync(finalOutput);
+  }
   if (!all) {
     print('Wrote $analysisOptionsFilename');
   }
