@@ -62,6 +62,7 @@ void writeAnalyisOptionsFile(
   final StringBuffer sb = new StringBuffer('''
 # Generated with ❤ by abide https://github.com/Workiva/abide
 # Lint rules are based on the linter package version $linterVersion
+# To find the latest version of the linter package visit https://pub.dartlang.org/packages/linter
 #
 # analysis_options.yaml docs: https://www.dartlang.org/guides/language/analysis-options 
 analyzer:
