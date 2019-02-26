@@ -22,6 +22,14 @@ import 'package:meta/meta.dart';
 import 'package:resource/resource.dart';
 import 'package:yaml/yaml.dart';
 
+/// Gets a sorted list of the top level yaml keys except ones
+/// starting with double underscore
+List<String> getTopLevelYamlKeys(YamlMap yaml) => yaml.keys
+    .map<String>((k) => k.toString())
+    .where((k) => !k.startsWith('__'))
+    .toList()
+      ..sort();
+
 Future<YamlMap> loadAbideYaml() async {
   const Resource resource = const Resource('package:abide/abide.yaml');
   final String string = await resource.readAsString();
