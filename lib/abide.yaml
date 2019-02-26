@@ -9,6 +9,8 @@
 #  optional    - optional. Up to you and your team to decide.
 #  avoid       - should not be present in analysis_options. Its presence is an error.
 
+__linter_version: 0.1.82
+
 always_declare_return_types:
   description: "Declare method return types."
   maturity: stable
@@ -622,8 +624,8 @@ prefer_bool_in_asserts:
   maturity: deprecated
   group: style
   docs: http://dart-lang.github.io/linter/lints/prefer_bool_in_asserts.html
-  recommendation: optional
-  reason: 
+  recommendation: avoid
+  reason: This lint rule has been deprecated
 
 prefer_collection_literals:
   description: "Use collection literals when possible."
@@ -841,6 +843,14 @@ prefer_void_to_null:
   recommendation: optional
   reason: 
 
+provide_deprecation_message:
+  description: "Provide a deprecation message, via @Deprecated(\"message\")."
+  maturity: stable
+  group: style
+  docs: http://dart-lang.github.io/linter/lints/provide_deprecation_message.html
+  recommendation: optional
+  reason: 
+
 public_member_api_docs:
   description: "Document all public members."
   maturity: stable
@@ -891,11 +901,11 @@ sort_unnamed_constructors_first:
 
 super_goes_last:
   description: "Place the `super` call last in a constructor initialization list."
-  maturity: stable
+  maturity: deprecated
   group: style
   docs: http://dart-lang.github.io/linter/lints/super_goes_last.html
-  recommendation: optional
-  reason: 
+  recommendation: avoid
+  reason: This lint rule has been deprecated
 
 test_types_in_equals:
   description: "Test type arguments in operator ==(Object other)."

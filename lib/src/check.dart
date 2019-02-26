@@ -25,11 +25,7 @@ AbideResult checkAnalysisOptions(
     @required String aoFilename,
     @required YamlMap pubspec,
     @required AbideResult resultToUpdate}) {
-  // shenanigans to make sure the dart 2 type system is happy
-  // this ensures that we actually have a list of strings and
-  // not a list of dynamic
-  final List<String> lintKeys =
-      abideYaml.keys.map<String>((k) => k.toString()).toList()..sort();
+  final List<String> lintKeys = getTopLevelYamlKeys(abideYaml);
 
   if (analysisOptions != null) {
     resultToUpdate.checks[analysisOptionsFilename].pass = true;
