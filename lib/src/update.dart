@@ -140,7 +140,7 @@ analyzer:
     final bool wasPresentCommented =
         commentedOutLintRule.hasMatch(currentAnalysisOptionsString);
     final bool wasPresent =
-        getYamlValue(currentAnalysisOptions, 'linter:rules:$lint');
+        getYamlValue(currentAnalysisOptions, 'linter:rules:$lint') ?? false;
 
     String issues = _lintResultFor(lint, lintErrorCounts);
     final bool hasIssues = issues.isNotEmpty;
