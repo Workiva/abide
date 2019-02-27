@@ -38,29 +38,32 @@ Future<String> updateAnalysisOption(YamlMap abideYaml,
   // new lint warnings. If we're not writing to a file, then lint
   // counts won't work, so skip that step.
   if (writeToFile) {
-    writeAnalyisOptionsFile(
+    String allRules = generateAnalyisOptionsContent(
         all: true,
         abideYaml: abideYaml,
         currentAnalysisOptions: currentAnalysisOptions,
         currentAnalysisOptionsString: currentAnalysisOptionsString);
+    writeAnalysisOptionsFile(allRules);
     lintErrorCounts = await getLintErrorCounts(abideYaml: abideYaml);
   }
-  return writeAnalyisOptionsFile(
+  String newContent = generateAnalyisOptionsContent(
       abideYaml: abideYaml,
       currentAnalysisOptions: currentAnalysisOptions,
       currentAnalysisOptionsString: currentAnalysisOptionsString,
       lintErrorCounts: lintErrorCounts,
-      uncommentClean: uncommentClean,
-      writeToFile: writeToFile);
+      uncommentClean: uncommentClean);
+  if (writeToFile) {
+    writeAnalysisOptionsFile(newContent);
+  }
+  return newContent;
 }
 
-String writeAnalyisOptionsFile(
+String generateAnalyisOptionsContent(
     {YamlMap abideYaml,
     YamlMap currentAnalysisOptions,
     String currentAnalysisOptionsString,
     bool all = false,
     bool uncommentClean = false,
-    bool writeToFile = true,
     Map<String, Map<String, int>> lintErrorCounts =
         const <String, Map<String, int>>{}}) {
   currentAnalysisOptions ??= new YamlMap();
@@ -219,18 +222,16 @@ linter:
 $output
 ''');
   }
-  String finalOutput = sb.toString();
-  if (writeToFile) {
-    new File(analysisOptionsFilename).writeAsStringSync(finalOutput);
-  }
-  if (!all) {
-    print('Wrote $analysisOptionsFilename');
-  }
+
   if (nMissingRecommendations > 0) {
     print(
         'There were missing recommendations. Please inform the maintainers of the abide tool to perform an abide upgrade.');
   }
-  return finalOutput;
+  return sb.toString();
+}
+
+void writeAnalysisOptionsFile(String content) {
+  new File(analysisOptionsFilename).writeAsStringSync(content);
 }
 
 String _lintResultFor(String lint, Map<String, Map<String, int>> lintErrors) {
