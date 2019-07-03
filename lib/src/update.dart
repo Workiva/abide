@@ -87,6 +87,15 @@ String generateAnalyisOptionsContent(
   }
   sb.write('''
 analyzer:
+  
+  # Enable stricter analyzer settings to find more runtime type errors at analysis time.
+  # See https://github.com/dart-lang/sdk/issues/33119 and
+  # https://github.com/dart-lang/sdk/issues/33749
+  # for more information
+  language:
+    strict-inference: true
+    strict-raw-types: true
+  
   # Strong mode is required. Applies to the current project.
   strong-mode:
     # When compiling to JS, both implicit options apply to the current 
