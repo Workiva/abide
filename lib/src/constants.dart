@@ -96,7 +96,7 @@ const String strongMode = 'strong-mode';
 
 final int dartMajorVersion = int.parse(Platform.version.split('.').first);
 
-const List<String> possibleAnalysisOptionFilenames = const <String>[
+const List<String> possibleAnalysisOptionFilenames = <String>[
   analysisOptionsFilename,
   oldAnalysisOptionsFilename
 ];

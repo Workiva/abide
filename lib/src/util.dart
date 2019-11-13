@@ -31,7 +31,7 @@ List<String> getTopLevelYamlKeys(YamlMap yaml) => yaml.keys
       ..sort();
 
 Future<YamlMap> loadAbideYaml() async {
-  const Resource resource = const Resource('package:abide/abide.yaml');
+  const Resource resource = Resource('package:abide/abide.yaml');
   final String string = await resource.readAsString();
   return loadYaml(string);
 }
