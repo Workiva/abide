@@ -35,13 +35,13 @@ class AbideResult {
       bool hasAnalysisOptionsFile = false,
       bool isStrongModeSet = false}) {
     checks.addAll(<String, Check>{
-      oldAnalysisOptionsFilename: new Check()
+      oldAnalysisOptionsFilename: Check()
         ..description = 'Do not use deprecated filename .analysis_options'
         ..pass = !isDeprecatedFilename,
-      analysisOptionsFilename: new Check()
+      analysisOptionsFilename: Check()
         ..description = 'analysis_options.yaml exists'
         ..pass = hasAnalysisOptionsFile,
-      strongMode: new Check()
+      strongMode: Check()
         ..description = 'analyzer strong mode is used'
         ..pass = isStrongModeSet,
     });
@@ -59,26 +59,26 @@ class AbideResult {
       if (recommendation == 'optional') {
         weight = 1;
       }
-      checks[lintKey] = new Check()
+      checks[lintKey] = Check()
         ..weight = weight
         ..description = '$recommendation lint rule: $lintKey';
     }
 
     // add non lint rule checks
     checks.addAll(<String, Check>{
-      abideInPubspecCheckKey: new Check()
+      abideInPubspecCheckKey: Check()
         ..weight = 12
         ..description =
             'pubspec.yaml does not contain Abide. Add Abide to your dev_dependencies in pubspec.yaml',
-      abideRunCheckKey: new Check()
+      abideRunCheckKey: Check()
         ..weight = 12
         ..description =
             'Abide is not run in CI. Add "pub run abide" command to run Abide in CI.',
-      dependencyValidatorInPubspecCheckKey: new Check()
+      dependencyValidatorInPubspecCheckKey: Check()
         ..weight = 8
         ..description =
             'pubspec.yaml does not contain Dependency Validator. Add Dependency Validator to your dev_dependencies in pubspec.yaml',
-      dependencyValidatorRunCheckKey: new Check()
+      dependencyValidatorRunCheckKey: Check()
         ..weight = 8
         ..description =
             'Dependency Validator is not run in CI. Add "pub run dependency_validator" command to run Dependency Validator in CI.',
@@ -114,7 +114,7 @@ class AbideResult {
 
   @override
   String toString() {
-    final StringBuffer sb = new StringBuffer();
+    final StringBuffer sb = StringBuffer();
     final Iterable<String> failingChecks = checks.values
         .where((Check c) => !c.pass)
         .map((Check c) =>

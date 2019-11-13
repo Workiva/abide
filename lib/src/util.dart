@@ -41,7 +41,7 @@ YamlMap loadYamlFile(String file) {
   if (file == null) {
     return null;
   }
-  final File f = new File(file);
+  final File f = File(file);
   if (!f.existsSync()) {
     return null;
   }
@@ -49,7 +49,7 @@ YamlMap loadYamlFile(String file) {
 }
 
 String loadFileAsString(String fileName) {
-  final File f = new File(fileName);
+  final File f = File(fileName);
   if (!f.existsSync()) {
     return null;
   }
@@ -57,7 +57,7 @@ String loadFileAsString(String fileName) {
 }
 
 List<String> loadFileAsList(String fileName) {
-  final File f = new File(fileName);
+  final File f = File(fileName);
   if (!f.existsSync()) {
     return null;
   }
@@ -86,13 +86,13 @@ String loadAnalysisOptionsAsString({String pathToAnalysisOptionsFile}) {
   if (filename == null) {
     return '';
   }
-  return new File(filename).readAsStringSync();
+  return File(filename).readAsStringSync();
 }
 
 /// Find an existing analysis option file in the given directory or current dir
 String findAnalysisOptionsFile({bool renameDeprecatedFilename = false}) {
-  final File oldAOpt = new File(oldAnalysisOptionsFilename);
-  final File aOpt = new File(analysisOptionsFilename);
+  final File oldAOpt = File(oldAnalysisOptionsFilename);
+  final File aOpt = File(analysisOptionsFilename);
   final bool oldAOptExists = oldAOpt.existsSync();
   bool aOptExists = aOpt.existsSync();
 
@@ -256,5 +256,5 @@ Future<Null> writeAbideJson(AbideResult result) async {
   String json = json.encode(result);
   final String file = '${Directory.current.path}/abide.json';
   print('Writing $file');
-  new File(file).writeAsStringSync(json);
+  File(file).writeAsStringSync(json);
 }

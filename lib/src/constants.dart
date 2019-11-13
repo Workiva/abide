@@ -42,7 +42,7 @@ class CommandChecks {
   );
 
   /// The check and commands associated with `pub run abide`.
-  factory CommandChecks.abide() => new CommandChecks._(
+  factory CommandChecks.abide() => CommandChecks._(
         abideRunCheckKey,
         abideRunCommand,
         commentedAbideRunCommandHashTag,
@@ -50,7 +50,7 @@ class CommandChecks {
       );
 
   /// The check and commands associated with `pub run dependency_validator`.
-  factory CommandChecks.dependencyValidator() => new CommandChecks._(
+  factory CommandChecks.dependencyValidator() => CommandChecks._(
         dependencyValidatorRunCheckKey,
         dependencyValidatorRunCommand,
         commentedDependencyValidatorRunCommandHashTag,
@@ -68,8 +68,8 @@ final Map<String, String> pubspecChecks = {
 /// The list of CommandChecks used in checkForRunCommand() to verify that Abide
 /// and Dependency Validator are being run in CI.
 final List<CommandChecks> commandChecksList = [
-  new CommandChecks.abide(),
-  new CommandChecks.dependencyValidator(),
+  CommandChecks.abide(),
+  CommandChecks.dependencyValidator(),
 ];
 
 const String abideJsonFilename = 'abide.json';
@@ -101,39 +101,39 @@ const List<String> possibleAnalysisOptionFilenames = <String>[
   oldAnalysisOptionsFilename
 ];
 
-final RegExp abideRunCommand = new RegExp(r'pub run abide');
+final RegExp abideRunCommand = RegExp(r'pub run abide');
 
 final RegExp commentedAbideRunCommandDoubleSlash =
-    new RegExp(r'\/\/.*pub run abide');
+    RegExp(r'\/\/.*pub run abide');
 
-final RegExp commentedAbideRunCommandHashTag = new RegExp(r'#.*pub run abide');
+final RegExp commentedAbideRunCommandHashTag = RegExp(r'#.*pub run abide');
 
-final RegExp commentedDartCommandInFile = new RegExp(r'#.*\.dart');
+final RegExp commentedDartCommandInFile = RegExp(r'#.*\.dart');
 
 final RegExp commentedDependencyValidatorRunCommandDoubleSlash =
-    new RegExp(r'\/\/.*pub run dependency_validator');
+    RegExp(r'\/\/.*pub run dependency_validator');
 
 final RegExp commentedDependencyValidatorRunCommandHashTag =
-    new RegExp(r'#.*pub run dependency_validator');
+    RegExp(r'#.*pub run dependency_validator');
 
-final RegExp commentedMakeCommandInFile = new RegExp(r'#.*\make');
+final RegExp commentedMakeCommandInFile = RegExp(r'#.*\make');
 
-final RegExp commentedScriptCommandInFile = new RegExp(r'#.*\.sh\b');
+final RegExp commentedScriptCommandInFile = RegExp(r'#.*\.sh\b');
 
 final RegExp commentedTaskRunnerCommand =
-    new RegExp(r'#.*pub run dart_dev task-runner');
+    RegExp(r'#.*pub run dart_dev task-runner');
 
-final RegExp dartCommandInFile = new RegExp(r'\bdart\b.*\.dart');
+final RegExp dartCommandInFile = RegExp(r'\bdart\b.*\.dart');
 
-final RegExp dartFile = new RegExp(r'\S*\.dart');
+final RegExp dartFile = RegExp(r'\S*\.dart');
 
 final RegExp dependencyValidatorRunCommand =
-    new RegExp(r'pub run dependency_validator');
+    RegExp(r'pub run dependency_validator');
 
-final RegExp makeCommandInFile = new RegExp(r'.*\make');
+final RegExp makeCommandInFile = RegExp(r'.*\make');
 
-final RegExp scriptCommandInFile = new RegExp(r'.*\.sh\b');
+final RegExp scriptCommandInFile = RegExp(r'.*\.sh\b');
 
-final RegExp scriptFile = new RegExp(r'\S*\.sh');
+final RegExp scriptFile = RegExp(r'\S*\.sh');
 
-final RegExp taskRunnerCommand = new RegExp(r'pub run dart_dev task-runner');
+final RegExp taskRunnerCommand = RegExp(r'pub run dart_dev task-runner');

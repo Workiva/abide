@@ -35,7 +35,7 @@ Future<Null> main() async {
     });
 
     File setupPubspecLock(String path) {
-      File pubspecLock = new File(path);
+      File pubspecLock = File(path);
       if (pubspecLock.existsSync()) {
         pubspecLock.deleteSync();
       }
@@ -53,7 +53,7 @@ Future<Null> main() async {
         loadYamlFile('test/fixtures/pubspec_with_promoted_deps.yaml');
 
     test('that pubspec without Abide in dev_dependencies fails', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspecWithMissingDeps, resultToUpdate: result);
 
@@ -63,7 +63,7 @@ Future<Null> main() async {
     });
 
     test('that pubspec with Abide in dev_dependencies passes', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspecWithDeps, resultToUpdate: result);
 
@@ -73,7 +73,7 @@ Future<Null> main() async {
     });
 
     test('that if pubspec name is Abide pubspec check passes', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspec, resultToUpdate: result);
 
@@ -84,7 +84,7 @@ Future<Null> main() async {
 
     test('that pubspec without dependency_validator in dev_dependencies fails',
         () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspecWithMissingDeps, resultToUpdate: result);
 
@@ -93,7 +93,7 @@ Future<Null> main() async {
 
     test('that pubspec with dependency_validator in dev_dependencies passes',
         () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspecWithDeps, resultToUpdate: result);
 
@@ -101,7 +101,7 @@ Future<Null> main() async {
     });
 
     test('that pubspec with dependency_validator in dependencies passes', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(pubspec: pubspecWithPromotedDeps, resultToUpdate: result);
 
@@ -109,7 +109,7 @@ Future<Null> main() async {
     });
 
     test('that pubspec with dependency_validator as name passes', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(
           pubspec: loadYamlFile('test/fixtures/dep_validator_pubspec.yaml'),
@@ -119,7 +119,7 @@ Future<Null> main() async {
     });
 
     test('that pubspec with semver_audit as name passes', () {
-      final AbideResult result = new AbideResult(abideYaml);
+      final AbideResult result = AbideResult(abideYaml);
 
       checkPubspec(
           pubspec: loadYamlFile('test/fixtures/semver_audit_pubspec.yaml'),
@@ -157,7 +157,7 @@ Future<Null> main() async {
 
     group('fails when run command ', () {
       test('is not found', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -170,7 +170,7 @@ Future<Null> main() async {
       });
 
       test('is commented out', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithCommentedRunCommand,
@@ -183,7 +183,7 @@ Future<Null> main() async {
       });
 
       test('is commented in task-runner called from Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithTaskRunner,
@@ -199,7 +199,7 @@ Future<Null> main() async {
       test(
           'comes from dev.dart file that does not have a task-runner called from Dockerfile',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithTaskRunner,
@@ -213,7 +213,7 @@ Future<Null> main() async {
       });
 
       test('is commented in task-runner called from Smithy', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -229,7 +229,7 @@ Future<Null> main() async {
       test(
           'comes from dev.dart file that does not have a task-runner called from Smithy',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -248,7 +248,7 @@ Future<Null> main() async {
             'test/fixtures/DockerfileWithDartCommandContainingCommentedOutRunCommand');
         final YamlMap smithy = loadYamlFile(
             'test/fixtures/smithy_with_dart_command_containing_commented_run_command.yaml');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -268,7 +268,7 @@ Future<Null> main() async {
         final YamlMap smithy = loadYamlFile(
             'test/fixtures/smithy_with_commented_dart_command.yaml');
 
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -284,7 +284,7 @@ Future<Null> main() async {
           () {
         final List<String> dockerfile = loadFileAsList(
             'test/fixtures/DockerfileWithScriptContainingCommentedRunCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -299,7 +299,7 @@ Future<Null> main() async {
       test('comes from a script executed in Smithy that is commented out', () {
         final YamlMap smithy = loadYamlFile(
             'test/fixtures/smithy_with_script_containing_commented_run_command.yaml');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -314,7 +314,7 @@ Future<Null> main() async {
       test('commented in a Makefile in a Dockerfile', () {
         final List<String> dockerfile =
             loadFileAsList('test/fixtures/DockerfilWithCommentedMakeCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -328,7 +328,7 @@ Future<Null> main() async {
       });
 
       test('is commented in a Makefile in a Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithMakeCommandContainingRunCommand,
@@ -345,7 +345,7 @@ Future<Null> main() async {
       test(
           'comes from a commented task-runner command found in a Makefile in a Dockerfile',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithMakeCommandContainingRunCommand,
@@ -361,7 +361,7 @@ Future<Null> main() async {
       test('is commented in a Makefile in Smithy', () {
         final YamlMap smithy = loadYamlFile(
             'test/fixtures/smithy_with_commented_make_command.yaml');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -375,7 +375,7 @@ Future<Null> main() async {
       });
 
       test('is commented in a Makefile in Smithy', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -392,7 +392,7 @@ Future<Null> main() async {
       test(
           'comes from a commented task-runner command found in a Makefile in Smithy',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -409,7 +409,7 @@ Future<Null> main() async {
 
     group('passes when run command', () {
       test('is found in Smithy file', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -422,7 +422,7 @@ Future<Null> main() async {
       });
 
       test('is found in Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithRunCommand,
@@ -436,7 +436,7 @@ Future<Null> main() async {
 
       test('is found in Dockerfile and run command is commented out in Smithy',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithRunCommand,
@@ -450,7 +450,7 @@ Future<Null> main() async {
 
       test('is found in Smithy and run command is commented out in Dockerfile',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithCommentedRunCommand,
@@ -467,7 +467,7 @@ Future<Null> main() async {
           () {
         final List<String> dockerfile = loadFileAsList(
             'test/fixtures/DockerfileWithRunCommandAndCommentedRunCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -480,7 +480,7 @@ Future<Null> main() async {
       });
 
       test('is found in both smithy.yaml and Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithRunCommand,
@@ -493,7 +493,7 @@ Future<Null> main() async {
       });
 
       test('comes from task-runner in Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithTaskRunner,
@@ -506,7 +506,7 @@ Future<Null> main() async {
       });
 
       test('comes from task-runner in Smithy', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -521,7 +521,7 @@ Future<Null> main() async {
       test('comes from a chanied dart file executed in a Dockerfile', () {
         final List<String> dockerfile =
             loadFileAsList('test/fixtures/DockerfileWithChainedDartCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -536,7 +536,7 @@ Future<Null> main() async {
       test('comes from an unchained dart file executed in a Dockerfile', () {
         final List<String> dockerfile =
             loadFileAsList('test/fixtures/DockerfileWithUnchainedDartCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -551,7 +551,7 @@ Future<Null> main() async {
       test('comes from a dart file executed in Smithy', () {
         final YamlMap smithy =
             loadYamlFile('test/fixtures/smithy_with_dart_command.yaml');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -566,7 +566,7 @@ Future<Null> main() async {
       test('comes from script excecuted in Dockerfile', () {
         final List<String> dockerfile = loadFileAsList(
             'test/fixtures/DockerfileWithScriptContainingRunCommand');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfile,
@@ -581,7 +581,7 @@ Future<Null> main() async {
       test('comes from script executed in Smithy', () {
         final YamlMap smithy = loadYamlFile(
             'test/fixtures/smithy_with_script_containing_run_command.yaml');
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -594,7 +594,7 @@ Future<Null> main() async {
       });
 
       test('comes from a Makefile command executed in Dockerfile', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithMakeCommandContainingRunCommand,
@@ -610,7 +610,7 @@ Future<Null> main() async {
       test(
           'comes from a task-runner command found in a Makefile in a Dockerfile',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileWithMakeCommandContainingRunCommand,
@@ -624,7 +624,7 @@ Future<Null> main() async {
       });
 
       test('comes from a Makefile command executed in Smithy', () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,
@@ -639,7 +639,7 @@ Future<Null> main() async {
 
       test('comes from a task-runner command found in a Makefile in Smithy',
           () {
-        final AbideResult result = new AbideResult(abideYaml);
+        final AbideResult result = AbideResult(abideYaml);
 
         checkForRunCommand(
           dockerfile: dockerfileNoRunCommand,

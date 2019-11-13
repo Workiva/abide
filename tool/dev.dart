@@ -41,7 +41,7 @@ Future<Null> main(List<String> args) async {
   ];
 
   config.genTestRunner.configs = <TestRunnerConfig>[
-    new TestRunnerConfig(env: Environment.vm, directory: 'test/vm/'),
+    TestRunnerConfig(env: Environment.vm, directory: 'test/vm/'),
   ];
 
   // Define the location of your test suites.

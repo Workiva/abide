@@ -23,7 +23,7 @@ Future<ProcessResult> run(String command,
     String outputFile,
     bool exitOnCompletion = false,
     bool exitOnFailure = true}) async {
-  final StringBuffer fullCommand = new StringBuffer('$command ')
+  final StringBuffer fullCommand = StringBuffer('$command ')
     ..writeAll(additionalArgs, ' ');
   final List<String> splitCommand = command.split(' ')..addAll(additionalArgs);
   final String executable = splitCommand.removeAt(0);

@@ -33,7 +33,7 @@ AbideResult checkAnalysisOptions(
         checkIfStrongModeIsSet(analysisOptions);
 
     final YamlList analysisOptionsRules =
-        getYamlValue(analysisOptions, 'linter:rules', new YamlList());
+        getYamlValue(analysisOptions, 'linter:rules', YamlList());
 
     for (String lintKey in lintKeys) {
       final bool isPresent = analysisOptionsRules.contains(lintKey);
@@ -146,7 +146,7 @@ AbideResult checkIfAbides(YamlMap abideYaml) {
   final YamlMap pubspec = loadPubspec();
   final YamlMap analysisOptions = loadAnalysisOptions();
   final String aoFilename = findAnalysisOptionsFile();
-  final AbideResult result = new AbideResult(abideYaml,
+  final AbideResult result = AbideResult(abideYaml,
       isDeprecatedFilename: aoFilename == oldAnalysisOptionsFilename);
 
   checkAnalysisOptions(
