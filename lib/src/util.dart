@@ -252,9 +252,9 @@ bool checkIfStrongModeIsSet(YamlMap analysisOptions) {
   return false;
 }
 
-Future<Null> writeAbideJson(AbideResult result) async {
-  String json = json.encode(result);
+Future<Null> writeAbideJson(AbideResult abideResult) async {
+  String result = json.encode(abideResult);
   final String file = '${Directory.current.path}/abide.json';
   print('Writing $file');
-  File(file).writeAsStringSync(json);
+  File(file).writeAsStringSync(result);
 }
