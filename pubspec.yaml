@@ -16,7 +16,6 @@ executables:
 
 dependencies:
   args:  ^1.4.4
-  dart2_constant: ^1.0.0
   meta: ^1.1.6
   resource: ^2.0.0
   yaml: ^2.1.12
