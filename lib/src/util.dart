@@ -71,7 +71,7 @@ YamlMap loadSmithy() =>
     loadYamlFile(smithyFilename) ?? loadYamlFile(smithyFilename2);
 
 YamlMap loadAnalysisOptions(
-    {String pathToAnalysisOptionsFile, bool renameDeprecatedFilename: false}) {
+    {String pathToAnalysisOptionsFile, bool renameDeprecatedFilename = false}) {
   if (pathToAnalysisOptionsFile != null) {
     return loadYamlFile(pathToAnalysisOptionsFile);
   } else {
@@ -90,7 +90,7 @@ String loadAnalysisOptionsAsString({String pathToAnalysisOptionsFile}) {
 }
 
 /// Find an existing analysis option file in the given directory or current dir
-String findAnalysisOptionsFile({bool renameDeprecatedFilename: false}) {
+String findAnalysisOptionsFile({bool renameDeprecatedFilename = false}) {
   final File oldAOpt = new File(oldAnalysisOptionsFilename);
   final File aOpt = new File(analysisOptionsFilename);
   final bool oldAOptExists = oldAOpt.existsSync();

@@ -18,11 +18,11 @@ import 'dart:async';
 import 'dart:io';
 
 Future<ProcessResult> run(String command,
-    {List<String> additionalArgs: const <String>[],
+    {List<String> additionalArgs = const <String>[],
     String workingDirectory,
     String outputFile,
-    bool exitOnCompletion: false,
-    bool exitOnFailure: true}) async {
+    bool exitOnCompletion = false,
+    bool exitOnFailure = true}) async {
   final StringBuffer fullCommand = new StringBuffer('$command ')
     ..writeAll(additionalArgs, ' ');
   final List<String> splitCommand = command.split(' ')..addAll(additionalArgs);

@@ -31,9 +31,9 @@ class AbideResult {
   bool abides = false;
 
   AbideResult(YamlMap abideYaml,
-      {bool isDeprecatedFilename: false,
-      bool hasAnalysisOptionsFile: false,
-      bool isStrongModeSet: false}) {
+      {bool isDeprecatedFilename = false,
+      bool hasAnalysisOptionsFile = false,
+      bool isStrongModeSet = false}) {
     checks.addAll(<String, Check>{
       oldAnalysisOptionsFilename: new Check()
         ..description = 'Do not use deprecated filename .analysis_options'
