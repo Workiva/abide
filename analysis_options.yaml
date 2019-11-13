@@ -11,6 +11,9 @@ analyzer:
     # Type fixes or areas for explicit typing.
     implicit-casts: true
     implicit-dynamic: true
+  exclude:
+    - 'example/**'
+    - 'upgrade/**'
 
 # ALL lint rules are included. Unused lints should be commented
 # out with a reason. An up to date list of all options is here
