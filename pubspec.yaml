@@ -15,14 +15,14 @@ executables:
 
 dependencies:
   args: ^1.4.4
-  meta: ^1.1.6
-  resource: ^2.0.0
-  yaml: ^2.1.12
+  meta: ^1.1.8
+  resource: ^2.1.6
+  yaml: ^2.2.0
 
 dev_dependencies:
   build_runner: ^1.7.1
   build_test: ^0.10.9
   build_web_compilers: ^2.5.1
-  dart_dev: ^2.0.0
+  dart_dev: ^3.0.0
   dependency_validator: ^1.4.0
   test: ^1.9.1
