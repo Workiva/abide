@@ -5,11 +5,11 @@ author: Rob Becker <rob.becker@workiva.com>
 homepage: https://github.com/Workiva/abide
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.4.0 <3.0.0'
 
 executables:
   abide_upgrade: upgrade
 
 dependencies:
-  yaml: ^2.1.12
-  linter: ">=0.1.51" # Use the latest published linter
+  yaml: ^2.2.0
+  linter: ">=0.1.104" # Use the latest published linter
