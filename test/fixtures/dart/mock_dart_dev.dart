@@ -23,13 +23,13 @@ class TestRunnerConfig {
 Future<Null> dev(List<String> args) {}
 
 class Config {
-  ConfigAnalyze analyze = new ConfigAnalyze();
-  ConfigCopyLicense copyLicense = new ConfigCopyLicense();
-  ConfigCoverage coverage = new ConfigCoverage();
-  ConfigFormat format = new ConfigFormat();
-  ConfigTaskRunner taskRunner = new ConfigTaskRunner();
-  ConfigGenTestRunner genTestRunner = new ConfigGenTestRunner();
-  ConfigTest test = new ConfigTest();
+  ConfigAnalyze analyze = ConfigAnalyze();
+  ConfigCopyLicense copyLicense = ConfigCopyLicense();
+  ConfigCoverage coverage = ConfigCoverage();
+  ConfigFormat format = ConfigFormat();
+  ConfigTaskRunner taskRunner = ConfigTaskRunner();
+  ConfigGenTestRunner genTestRunner = ConfigGenTestRunner();
+  ConfigTest test = ConfigTest();
 }
 
 class ConfigAnalyze {
@@ -65,4 +65,4 @@ class ConfigTest {
   List<String> platforms = [];
 }
 
-Config config = new Config();
+Config config = Config();

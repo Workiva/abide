@@ -13,11 +13,11 @@
 // limitations under the License.
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:abide/src/constants.dart';
 import 'package:abide/src/result.dart';
-import 'package:dart2_constant/convert.dart' as convert;
 import 'package:meta/meta.dart';
 import 'package:resource/resource.dart';
 import 'package:yaml/yaml.dart';
@@ -31,7 +31,7 @@ List<String> getTopLevelYamlKeys(YamlMap yaml) => yaml.keys
       ..sort();
 
 Future<YamlMap> loadAbideYaml() async {
-  const Resource resource = const Resource('package:abide/abide.yaml');
+  const Resource resource = Resource('package:abide/abide.yaml');
   final String string = await resource.readAsString();
   return loadYaml(string);
 }
@@ -41,7 +41,7 @@ YamlMap loadYamlFile(String file) {
   if (file == null) {
     return null;
   }
-  final File f = new File(file);
+  final File f = File(file);
   if (!f.existsSync()) {
     return null;
   }
@@ -49,7 +49,7 @@ YamlMap loadYamlFile(String file) {
 }
 
 String loadFileAsString(String fileName) {
-  final File f = new File(fileName);
+  final File f = File(fileName);
   if (!f.existsSync()) {
     return null;
   }
@@ -57,7 +57,7 @@ String loadFileAsString(String fileName) {
 }
 
 List<String> loadFileAsList(String fileName) {
-  final File f = new File(fileName);
+  final File f = File(fileName);
   if (!f.existsSync()) {
     return null;
   }
@@ -71,7 +71,7 @@ YamlMap loadSmithy() =>
     loadYamlFile(smithyFilename) ?? loadYamlFile(smithyFilename2);
 
 YamlMap loadAnalysisOptions(
-    {String pathToAnalysisOptionsFile, bool renameDeprecatedFilename: false}) {
+    {String pathToAnalysisOptionsFile, bool renameDeprecatedFilename = false}) {
   if (pathToAnalysisOptionsFile != null) {
     return loadYamlFile(pathToAnalysisOptionsFile);
   } else {
@@ -86,13 +86,13 @@ String loadAnalysisOptionsAsString({String pathToAnalysisOptionsFile}) {
   if (filename == null) {
     return '';
   }
-  return new File(filename).readAsStringSync();
+  return File(filename).readAsStringSync();
 }
 
 /// Find an existing analysis option file in the given directory or current dir
-String findAnalysisOptionsFile({bool renameDeprecatedFilename: false}) {
-  final File oldAOpt = new File(oldAnalysisOptionsFilename);
-  final File aOpt = new File(analysisOptionsFilename);
+String findAnalysisOptionsFile({bool renameDeprecatedFilename = false}) {
+  final File oldAOpt = File(oldAnalysisOptionsFilename);
+  final File aOpt = File(analysisOptionsFilename);
   final bool oldAOptExists = oldAOpt.existsSync();
   bool aOptExists = aOpt.existsSync();
 
@@ -252,9 +252,9 @@ bool checkIfStrongModeIsSet(YamlMap analysisOptions) {
   return false;
 }
 
-Future<Null> writeAbideJson(AbideResult result) async {
-  String json = convert.json.encode(result);
+Future<Null> writeAbideJson(AbideResult abideResult) async {
+  String result = json.encode(abideResult);
   final String file = '${Directory.current.path}/abide.json';
   print('Writing $file');
-  new File(file).writeAsStringSync(json);
+  File(file).writeAsStringSync(result);
 }

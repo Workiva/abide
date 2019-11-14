@@ -19,7 +19,7 @@ import 'package:yaml/yaml.dart';
 import 'package:args/args.dart';
 
 Future<Null> main(List<String> args) async {
-  final ArgParser parser = new ArgParser()
+  final ArgParser parser = ArgParser()
     ..addFlag('json', abbr: 'j', negatable: false)
     ..addFlag('uncomment-clean', abbr: 'c', negatable: false)
     ..addOption('repo', abbr: 'r')

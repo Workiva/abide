@@ -66,7 +66,7 @@ String generateAnalyisOptionsContent(
     bool uncommentClean = false,
     Map<String, Map<String, int>> lintErrorCounts =
         const <String, Map<String, int>>{}}) {
-  currentAnalysisOptions ??= new YamlMap();
+  currentAnalysisOptions ??= YamlMap();
 
   String linterVersion = abideYaml['__linter_version'];
   final String currentInclude = getYamlValue(currentAnalysisOptions, 'include');
@@ -75,7 +75,7 @@ String generateAnalyisOptionsContent(
   final bool currentImplicitDynamic = getYamlValue(
       currentAnalysisOptions, 'analyzer:strong-mode:implicit-dynamic', true);
 
-  final StringBuffer sb = new StringBuffer('''
+  final StringBuffer sb = StringBuffer('''
 # Generated with ❤ by abide https://github.com/Workiva/abide
 # Lint rules are based on the linter package version $linterVersion
 # To find the latest version of the linter package visit https://pub.dartlang.org/packages/linter
@@ -119,8 +119,8 @@ analyzer:
     }
   }
 
-  final StringBuffer errors = new StringBuffer();
-  final StringBuffer output = new StringBuffer();
+  final StringBuffer errors = StringBuffer();
+  final StringBuffer output = StringBuffer();
 
   int nMissingRecommendations = 0;
   final List<String> lintKeys = getTopLevelYamlKeys(abideYaml);
@@ -136,8 +136,8 @@ analyzer:
       recommendation = 'optional';
     }
     // ignore: prefer_interpolation_to_compose_strings
-    final RegExp commentedOutLintRule = new RegExp(r'^\s*#+\s*-\s+' + lint,
-        multiLine: true, caseSensitive: false);
+    final RegExp commentedOutLintRule =
+        RegExp(r'^\s*#+\s*-\s+' + lint, multiLine: true, caseSensitive: false);
     final bool avoid = recommendation == 'avoid';
     final bool required = recommendation == 'required';
     final bool wasPresentCommented =
@@ -231,7 +231,7 @@ $output
 }
 
 void writeAnalysisOptionsFile(String content) {
-  new File(analysisOptionsFilename).writeAsStringSync(content);
+  File(analysisOptionsFilename).writeAsStringSync(content);
 }
 
 String _lintResultFor(String lint, Map<String, Map<String, int>> lintErrors) {
@@ -299,7 +299,7 @@ List<String> _findFilesFromEntryPoints(List<String> entryPoints) {
   final List<String> files = <String>[];
   for (String p in entryPoints) {
     if (FileSystemEntity.isDirectorySync(p)) {
-      final Directory dir = new Directory(p);
+      final Directory dir = Directory(p);
       final List<FileSystemEntity> entities = dir.listSync();
       files.addAll(entities
           .where((FileSystemEntity e) =>
