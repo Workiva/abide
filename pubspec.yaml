@@ -1,10 +1,6 @@
 name: 'abide'
 version: 1.6.6
 description: A command line tool to manage analysis_options.yaml and check if it abides by requirements.
-authors: 
-  - Workiva Client Platform Team <clientplatform@workiva.com>
-  - Rob Becker <rob.becker@workiva.com>
-  - Sebastian Malysa <sebastian.malysa@workiva.com>
   
 homepage: https://github.com/Workiva/abide
 

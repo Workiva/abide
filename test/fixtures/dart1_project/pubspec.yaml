@@ -1,7 +1,6 @@
 name: 'dart1_project'
 version: 1.1.0
 description: mock description
-author: Mock Author <mock.author@workiva.com>
 homepage: https://github.com/Workiva/mock_name
 publish_to: https://pub.workiva.org
 
