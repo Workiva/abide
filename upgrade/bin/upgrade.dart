@@ -1,3 +1,5 @@
+// @dart=2.7
+// ^ Do not remove until migrated to null safety. More info at https://wiki.atl.workiva.net/pages/viewpage.action?pageId=189370832
 import 'dart:io';
 import 'package:linter/src/rules.dart'; // ignore: implementation_imports
 import 'package:linter/src/analyzer.dart'; // ignore: implementation_imports
