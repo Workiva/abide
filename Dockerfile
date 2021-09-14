@@ -1,4 +1,4 @@
-FROM google/dart:2.7.2 as build
+FROM google/dart:2.13.4 as build
 
 # Build Environment Vars
 ARG BUILD_ID
@@ -19,7 +19,7 @@ RUN echo "Starting the script sections" && \
 	pub get && \
 	dartfmt --set-exit-if-changed --dry-run lib bin test tool && \ 
 	pub run dependency_validator -x upgrade/ -i dart_dev && \
-	dartanalyzer bin lib test && \
+	pub run dart_dev analyze && \
 	pub run abide || echo Abide would have failed CI. && \
 	pub run test --concurrency=4 -p vm --reporter=expanded test/vm/ && \
 	tar czvf abide.pub.tgz LICENSE README.md pubspec.yaml analysis_options.yaml lib/ bin/ && \

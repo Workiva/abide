@@ -13,11 +13,11 @@
 // limitations under the License.
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:abide/src/constants.dart';
 import 'package:abide/src/result.dart';
-import 'package:dart2_constant/convert.dart' as convert;
 import 'package:meta/meta.dart';
 import 'package:resource/resource.dart';
 import 'package:yaml/yaml.dart';
@@ -253,8 +253,8 @@ bool checkIfStrongModeIsSet(YamlMap analysisOptions) {
 }
 
 Future<Null> writeAbideJson(AbideResult result) async {
-  String json = convert.json.encode(result);
+  String s = json.encode(result);
   final String file = '${Directory.current.path}/abide.json';
   print('Writing $file');
-  new File(file).writeAsStringSync(json);
+  new File(file).writeAsStringSync(s);
 }
