@@ -5,15 +5,14 @@ description: A command line tool to manage analysis_options.yaml and check if it
 homepage: https://github.com/Workiva/abide
 
 environment:
-  sdk: '>=1.23.0 <3.0.0'
+  sdk: ">=2.11.0 <3.0.0"
 
 executables:
   abide:
 
 dependencies:
   args:  ^1.4.4
-  dart2_constant: ^1.0.0
-  meta: ^1.2.2
+  meta: '>=1.2.2 <1.7.0'
   resource: ^2.0.0
   yaml: ^2.1.12
 

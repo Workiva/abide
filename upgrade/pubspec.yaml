@@ -4,7 +4,7 @@ description: A command line tool to update abide.yaml
 homepage: https://github.com/Workiva/abide
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: ">=2.11.0 <3.0.0"
 
 executables:
   abide_upgrade: upgrade
