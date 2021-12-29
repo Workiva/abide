@@ -12,3 +12,5 @@ executables:
 dependencies:
   yaml: ^2.1.12
   linter: ">=0.1.51" # Use the latest published linter
+dependency_overrides:
+  yaml: 3.0.0
