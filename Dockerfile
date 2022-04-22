@@ -16,12 +16,12 @@ ADD . /build/
 
 RUN echo "Starting the script sections" && \
 	dart --version && \
-	pub get && \
-	dartfmt --set-exit-if-changed --dry-run lib bin test tool && \ 
-	pub run dependency_validator -x upgrade/ -i dart_dev && \
-	pub run dart_dev analyze && \
-	pub run abide || echo Abide would have failed CI. && \
-	pub run test --concurrency=4 -p vm --reporter=expanded test/vm/ && \
+	dart pub get && \
+	dart format --set-exit-if-changed --dry-run lib bin test tool && \ 
+	dart run dependency_validator -x upgrade/ -i dart_dev && \
+	dart run dart_dev analyze && \
+	dart run abide || echo Abide would have failed CI. && \
+	dart test --concurrency=4 -p vm --reporter=expanded test/vm/ && \
 	tar czvf abide.pub.tgz LICENSE README.md pubspec.yaml analysis_options.yaml lib/ bin/ && \
 	echo "Script sections completed"
 ARG BUILD_ARTIFACTS_DART-DEPENDENCIES=/build/pubspec.lock
